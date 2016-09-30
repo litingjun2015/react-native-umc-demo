@@ -14,6 +14,11 @@
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* reactnative_initTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* reactnative_initTests.m */; };
 		112DA5F41D9E6738001B1F6A /* CalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 112DA5F31D9E6738001B1F6A /* CalendarManager.m */; };
+		112DA60C1D9E68EF001B1F6A /* CMpassportManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 112DA60A1D9E68EF001B1F6A /* CMpassportManager.m */; };
+		112DA60D1D9E68EF001B1F6A /* UMCSDKOpen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112DA60B1D9E68EF001B1F6A /* UMCSDKOpen.framework */; };
+		112DA60F1D9E6956001B1F6A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112DA60E1D9E6956001B1F6A /* CoreTelephony.framework */; };
+		112DA6111D9E6964001B1F6A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112DA6101D9E6964001B1F6A /* SystemConfiguration.framework */; };
+		112DA6131D9E696E001B1F6A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112DA6121D9E696E001B1F6A /* Security.framework */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -118,6 +123,12 @@
 		00E356F21AD99517003FC87E /* reactnative_initTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = reactnative_initTests.m; sourceTree = "<group>"; };
 		112DA5F21D9E6738001B1F6A /* CalendarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarManager.h; path = reactnative_init/CalendarManager.h; sourceTree = "<group>"; };
 		112DA5F31D9E6738001B1F6A /* CalendarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarManager.m; path = reactnative_init/CalendarManager.m; sourceTree = "<group>"; };
+		112DA6091D9E68EF001B1F6A /* CMpassportManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMpassportManager.h; path = reactnative_init/CMpassportManager.h; sourceTree = "<group>"; };
+		112DA60A1D9E68EF001B1F6A /* CMpassportManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMpassportManager.m; path = reactnative_init/CMpassportManager.m; sourceTree = "<group>"; };
+		112DA60B1D9E68EF001B1F6A /* UMCSDKOpen.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UMCSDKOpen.framework; path = reactnative_init/UMCSDKOpen.framework; sourceTree = "<group>"; };
+		112DA60E1D9E6956001B1F6A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		112DA6101D9E6964001B1F6A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		112DA6121D9E696E001B1F6A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* reactnative_init.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reactnative_init.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +156,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				112DA6131D9E696E001B1F6A /* Security.framework in Frameworks */,
+				112DA6111D9E6964001B1F6A /* SystemConfiguration.framework in Frameworks */,
+				112DA60F1D9E6956001B1F6A /* CoreTelephony.framework in Frameworks */,
+				112DA60D1D9E68EF001B1F6A /* UMCSDKOpen.framework in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
@@ -237,6 +252,9 @@
 		13B07FAE1A68108700A75B9A /* reactnative_init */ = {
 			isa = PBXGroup;
 			children = (
+				112DA6091D9E68EF001B1F6A /* CMpassportManager.h */,
+				112DA60A1D9E68EF001B1F6A /* CMpassportManager.m */,
+				112DA60B1D9E68EF001B1F6A /* UMCSDKOpen.framework */,
 				112DA5F21D9E6738001B1F6A /* CalendarManager.h */,
 				112DA5F31D9E6738001B1F6A /* CalendarManager.m */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -294,6 +312,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				112DA6121D9E696E001B1F6A /* Security.framework */,
+				112DA6101D9E6964001B1F6A /* SystemConfiguration.framework */,
+				112DA60E1D9E6956001B1F6A /* CoreTelephony.framework */,
 				13B07FAE1A68108700A75B9A /* reactnative_init */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* reactnative_initTests */,
@@ -550,6 +571,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				112DA60C1D9E68EF001B1F6A /* CMpassportManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				112DA5F41D9E6738001B1F6A /* CalendarManager.m in Sources */,
 			);
@@ -613,6 +635,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/reactnative_init",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -635,6 +661,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/reactnative_init",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,

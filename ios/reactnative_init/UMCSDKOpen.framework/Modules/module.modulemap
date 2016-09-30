@@ -1,0 +1,6 @@
+framework module UMCSDKOpen {
+  umbrella header "UMCSDKOpen.h"
+
+  export *
+  module * { export * }
+}
