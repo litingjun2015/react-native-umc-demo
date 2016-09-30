@@ -9,9 +9,26 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableHighlight
 } from 'react-native';
 
+import { NativeModules } from 'react-native';
+var CalendarManager = NativeModules.CalendarManager;
+
+
+class CustomButton extends React.Component {
+  render() {
+    return (
+      <TouchableHighlight
+        style={styles.button}
+        underlayColor="#a5a5a5"
+        onPress={this.props.onPress}>
+        <Text style={styles.buttonText}>{this.props.text}</Text>
+      </TouchableHighlight>
+    );
+  }
+}
 class reactnative_init extends Component {
   render() {
     return (
@@ -20,8 +37,12 @@ class reactnative_init extends Component {
           Welcome to React Native!
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js
+          To get started, edit index.ios.js native module call
         </Text>
+         <CustomButton text="button"
+                            onPress={()=> CalendarManager.addEvent('Birthday Party', '4 Privet Drive, Surrey') }
+                />
+
         <Text style={styles.instructions}>
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
