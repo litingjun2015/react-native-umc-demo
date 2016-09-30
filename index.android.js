@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 
 import ToastAndroid from './ToastAndroid';
-
+import UMCAndroid from './UMCAndroid';
 
 class CustomButton extends React.Component {
   render() {
@@ -40,6 +40,9 @@ class reactnative_init extends Component {
         </Text>
         <CustomButton text="toast"
                     onPress={()=> ToastAndroid.show('Awesome native call', ToastAndroid.SHORT)}
+        />
+        <CustomButton text="toast"
+                    onPress={()=> UMCAndroid.show('Awesome native call', ToastAndroid.SHORT)}
         />
 
         <Text style={styles.instructions}>
