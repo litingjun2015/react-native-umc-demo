@@ -20,12 +20,20 @@ public class MainApplication extends Application implements ReactApplication {
       return BuildConfig.DEBUG;
     }
 
+//    @Override
+//    protected List<ReactPackage> getPackages() {
+//      return Arrays.<ReactPackage>asList(
+//          new MainReactPackage()
+//      );
+//    }
+
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
-      );
+              new MainReactPackage(),
+              new AnExampleReactPackage()); // <-- Add this line with your package name.
     }
+
   };
 
   @Override
