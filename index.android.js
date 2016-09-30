@@ -38,12 +38,26 @@ class reactnative_init extends Component {
         <Text style={styles.instructions}>
           To get started, edit index.android.js test native module call
         </Text>
+        <Text style={styles.instructions}>
+
+        </Text>
+
+
         <CustomButton text="toast"
                     onPress={()=> ToastAndroid.show('Awesome native call', ToastAndroid.SHORT)}
         />
-        <CustomButton text="toast"
+
+        <Text style={styles.instructions}>
+
+                </Text>
+
+        <CustomButton text="中移动统一认证显式登录"
                     onPress={()=> UMCAndroid.show('Awesome native call', ToastAndroid.SHORT)}
         />
+
+        <Text style={styles.instructions}>
+
+                </Text>
 
         <Text style={styles.instructions}>
           Double tap R on your keyboard to reload,{'\n'}

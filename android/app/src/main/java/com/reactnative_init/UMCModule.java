@@ -4,6 +4,7 @@ package com.reactnative_init;
  * Created by duanglink on 9/30/16.
  */
 
+import android.content.Intent;
 import android.widget.Toast;
 
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -12,6 +13,8 @@ import com.facebook.react.bridge.ReactMethod;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import cn.richinfo.umcsdk.activity.UMCMainActivity;
 
 public class UMCModule extends ReactContextBaseJavaModule {
 
@@ -43,5 +46,8 @@ public class UMCModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void show(String message, int duration) {
         Toast.makeText(getReactApplicationContext(), message+" (call from redefined umc native module)", duration).show();
+
+        Intent intent = new Intent(getCurrentActivity(), UMCMainActivity.class);
+        getCurrentActivity().startActivity(intent);
     }
 }
