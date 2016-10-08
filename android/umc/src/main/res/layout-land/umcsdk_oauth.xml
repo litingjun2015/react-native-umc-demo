@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg" >
+
+    <!-- title -->
+
+    <include
+        android:id="@+id/umcsdk_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/umcsdk_title_height"
+        android:layout_alignParentTop="true"
+        layout="@layout/umcsdk_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/umcsdk_title_layout"
+        android:fillViewport="true"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="320dp" >
+
+            <!-- 异常提示 -->
+
+            <include
+                android:id="@+id/umcsdk_exception_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                layout="@layout/umcsdk_error"
+                android:visibility="gone" />
+
+            <!-- 短信验证码登录标题 -->
+
+            <TextView
+                android:id="@+id/umcsdk_oauth_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/umcsdk_loginbtn_left"
+                android:layout_marginRight="@dimen/umcsdk_loginbtn_left"
+                android:layout_marginTop="@dimen/umcsdk_smscode_margin"
+                android:gravity="left|center_vertical"
+                android:text="@string/umcsdk_sms_login"
+                android:textColor="@color/color_smscode_title"
+                android:textSize="@dimen/umcsdk_font_eighteen" />
+
+            <!-- 手机号码 -->
+
+            <EditText
+                android:id="@+id/umcsdk_oauth_account"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/umcsdk_btn_height"
+                android:layout_below="@+id/umcsdk_oauth_text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/umcsdk_dimen_ten"
+                android:layout_marginLeft="@dimen/umcsdk_loginbtn_left"
+                android:layout_marginRight="@dimen/umcsdk_loginbtn_left"
+                android:layout_marginTop="@dimen/umcsdk_dimen_ten"
+                android:background="@drawable/umcsdk_edit_bg"
+                android:hint="@string/umcsdk_hint_username"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:maxLines="1"
+                android:minWidth="@dimen/umcsdk_min_width"
+                android:paddingLeft="@dimen/umcsdk_dimen_ten"
+                android:textColor="@color/color_title_text"
+                android:textSize="@dimen/umcsdk_font_sixteen" />
+
+            <!-- 短信验证码 -->
+
+            <RelativeLayout
+                android:id="@+id/layout_oauth_passwd"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/umcsdk_btn_height"
+                android:layout_alignLeft="@id/umcsdk_oauth_account"
+                android:layout_alignRight="@id/umcsdk_oauth_account"
+                android:layout_below="@id/umcsdk_oauth_account"
+                android:layout_centerHorizontal="true"
+                android:minWidth="@dimen/umcsdk_min_width" >
+
+                <Button
+                    android:id="@+id/umcsdk_smscode_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/umcsdk_title_height"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/umcsdk_dimen_eight"
+                    android:background="@drawable/umcsdk_smscode_bg"
+                    android:gravity="center"
+                    android:minWidth="120dp"
+                    android:paddingLeft="@dimen/umcsdk_padding_container"
+                    android:paddingRight="@dimen/umcsdk_padding_container"
+                    android:text="@string/umcsdk_get_sms_code"
+                    android:textColor="@color/color_blue_text"
+                    android:textSize="@dimen/umcsdk_font_seventeen" />
+
+                <EditText
+                    android:id="@+id/umcsdk_oauth_passwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/umcsdk_title_height"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/umcsdk_smscode_btn"
+                    android:background="@drawable/umcsdk_edit_bg"
+                    android:hint="@string/umcsdk_hint_passwd"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/umcsdk_dimen_ten"
+                    android:textColor="@color/color_title_text"
+                    android:textSize="@dimen/umcsdk_font_sixteen" />
+            </RelativeLayout>
+
+            <!-- 登录按钮 -->
+
+            <include
+                android:id="@+id/umcsdk_login_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/umcsdk_btn_height"
+                android:layout_below="@id/layout_oauth_passwd"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/umcsdk_loginbtn_left"
+                android:layout_marginRight="@dimen/umcsdk_loginbtn_left"
+                android:layout_marginTop="@dimen/umcsdk_smscode_login_margin"
+                layout="@layout/umcsdk_login_button"
+                android:clickable="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:minWidth="@dimen/umcsdk_min_width" />
+
+            <LinearLayout
+                android:id="@+id/umcsdk_capaids_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/umcsdk_login_btn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/umcsdk_loginbtn_left"
+                android:layout_marginRight="@dimen/umcsdk_loginbtn_left"
+                android:layout_marginTop="@dimen/umcsdk_server_clause_margin"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/umcsdk_capaids_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center_vertical"
+                    android:minWidth="@dimen/umcsdk_min_width"
+                    android:text="@string/umcsdk_capaids_text"
+                    android:textColor="#666666"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/umcsdk_dimen_ten"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <CheckBox
+                        android:id="@+id/umcsdk_capability_checkbox"
+                        android:layout_width="@dimen/umcsdk_server_checkbox_size"
+                        android:layout_height="@dimen/umcsdk_server_checkbox_size"
+                        android:background="@drawable/umcsdk_checkbox_bg"
+                        android:button="@null"
+                        android:checked="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/umcsdk_padding_container"
+                        android:text="@string/umcsdk_get"
+                        android:textColor="@color/color_version_text"
+                        android:textSize="@dimen/umcsdk_font_twenteen" />
+
+                    <TextView
+                        android:id="@+id/umcsdk_capability_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:text="@string/umcsdk_capability"
+                        android:textColor="@color/color_version_text"
+                        android:textSize="@dimen/umcsdk_font_twenteen" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- 版本号标签 -->
+
+            <TextView
+                android:id="@+id/umcsdk_version_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="@dimen/umcsdk_version_margin"
+                android:text="@string/umcsdk_version_name"
+                android:textColor="@color/color_version_text"
+                android:textSize="@dimen/umcsdk_font_fourteen" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

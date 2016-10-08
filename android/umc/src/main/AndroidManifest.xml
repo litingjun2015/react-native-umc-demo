@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.richinfo.umcsdk.show"
+    android:versionCode="5"
+    android:versionName="1.4.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="18" />
+
+    <!-- required -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <application
+        android:name="cn.richinfo.umcsdk.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+        <activity
+            android:name="cn.richinfo.umcsdk.activity.UMCMainActivity"
+            android:configChanges="locale"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- required -->
+        <activity
+            android:name="cm.pass.sdk.activity.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="unspecified" >
+        </activity>
+        <!-- required -->
+        <activity
+            android:name="cm.pass.sdk.activity.OAuthActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="unspecified" >
+        </activity>
+        <!-- required -->
+        <activity
+            android:name="cm.pass.sdk.activity.ChooseAccountActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="unspecified" >
+        </activity>
+        <activity android:name="cn.richinfo.umcsdk.activity.Js2JavaActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="www.ucmopen.com"
+                    android:scheme="myapp" />
+            </intent-filter>
+        </activity>
+        <!-- requied -->
+        <meta-data
+            android:name="UMCSDK_SMSCODE_FLAG"
+            android:value="0" >
+        </meta-data>
+
+        <!-- requied -->
+        <meta-data
+            android:name="UMCSDK_SMSLOGIN_FLAG"
+            android:value="0" >
+        </meta-data>
+        <!-- requied -->
+        <receiver android:name="cm.pass.sdk.broadcastreceiver.SsoSyncReceiver" >
+            <intent-filter>
+                <action android:name="cn.richinfo.provider.receiver" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg" >
+
+    <include
+        android:id="@+id/umcsdk_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/umcsdk_title_height"
+        android:layout_alignParentTop="true"
+        layout="@layout/umcsdk_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/umcsdk_title_layout"
+        android:fillViewport="true"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="320dp" >
+
+            <!-- logo -->
+
+            <ImageView
+                android:id="@+id/umcsdk_log_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/umcsdk_mobilelogo_margin"
+                android:background="@drawable/umcsdk_mobile_logo" />
+
+            <TextView
+                android:id="@+id/umcsdk_account_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/umcsdk_log_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/umcsdk_loginbtn_left"
+                android:layout_marginRight="@dimen/umcsdk_loginbtn_left"
+                android:layout_marginTop="@dimen/umcsdk_loginbtn_margin"
+                android:gravity="center"
+                android:text="@string/umcsdk_account_login"
+                android:textColor="@color/color_version_text"
+                android:textSize="16sp" />
+
+            <cm.pass.sdk.widget.CapabilityListView
+                android:id="@+id/umcsdk_account_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/umcsdk_account_text"
+                android:layout_marginLeft="@dimen/umcsdk_loginbtn_left"
+                android:layout_marginRight="@dimen/umcsdk_loginbtn_left"
+                android:layout_marginTop="@dimen/umcsdk_dimen_ten"
+                android:divider="@null"
+                android:listSelector="#00000000"
+                android:scrollbars="none" />
+            <!-- 版本号标签 -->
+
+            <TextView
+                android:id="@+id/umcsdk_version_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="@dimen/umcsdk_version_margin"
+                android:text="@string/umcsdk_version_name"
+                android:textColor="@color/color_version_text"
+                android:textSize="@dimen/umcsdk_font_fourteen" />
+        </RelativeLayout>
+    </ScrollView>
+    <!-- 顶部提示标识 写在后面空间不够时在最上面覆盖下面的 -->
+
+    <include
+        android:id="@+id/umcsdk_exception_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/umcsdk_title_layout"
+        layout="@layout/umcsdk_error"
+        android:visibility="gone" />
+
+</RelativeLayout>

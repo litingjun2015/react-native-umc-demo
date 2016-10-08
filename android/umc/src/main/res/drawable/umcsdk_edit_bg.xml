@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 输入框已经没有焦点状态了 -->
+    <item android:drawable="@drawable/umcsdk_edit_bg_n" android:state_enabled="true" android:state_focused="true"/>
+    <item android:drawable="@drawable/umcsdk_edit_bg_n" android:state_enabled="true" android:state_pressed="true"/>
+    <item android:drawable="@drawable/umcsdk_edit_bg_n" android:state_enabled="true" android:state_selected="true"/>
+    <item android:drawable="@drawable/umcsdk_edit_bg_n" android:state_enabled="false" android:state_focused="true"></item>
+    <item android:drawable="@drawable/umcsdk_edit_bg_n"/>
+
+</selector>

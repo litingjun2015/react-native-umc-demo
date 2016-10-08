@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  Image
 } from 'react-native';
 
 import { NativeModules } from 'react-native';
@@ -30,7 +31,16 @@ class CustomButton extends React.Component {
     );
   }
 }
+
+
 class reactnative_init extends Component {
+
+renderImage(imgURI) {
+    return (
+      <Image source={{uri: imgURI}} />
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -38,7 +48,7 @@ class reactnative_init extends Component {
           Welcome to React Native!
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js native module call
+          To get started, edit index.ios.js native module call, 1008
         </Text>
         <Text style={styles.instructions}>
 
@@ -59,8 +69,22 @@ class reactnative_init extends Component {
 
                 </Text>
 
+<View>
+        <Image
+          style={{width: 150, height: 150}}
+          source={{uri: 'https://i.vimeocdn.com/portrait/58832_300x300.jpg'}}
+        />
+
+        <Image
+                  style={{width: 150, height: 150}}
+                  source={{uri: 'https://www.hello.com/img_/hello_logo_hero.png'}}
+                />
+
+
+
+</View>
         <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
+          i Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
         </Text>
       </View>
