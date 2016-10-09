@@ -28,6 +28,7 @@ class CustomButton extends React.Component {
     );
   }
 }
+
 class reactnative_init extends Component {
 
 // https://github.com/facebook/react-native/blob/master/Examples/Movies/SearchScreen.js
@@ -92,7 +93,7 @@ formData.append('loginAccount', '13264760029');
                })
        .then((response) => response.json())
        .then((responseData) => {
-       ToastAndroid.show('ok', ToastAndroid.SHORT);
+         ToastAndroid.show('ok', ToastAndroid.SHORT);
          ToastAndroid.show(responseData.username, ToastAndroid.SHORT);
          ToastAndroid.show(responseData.telephone, ToastAndroid.SHORT);
 

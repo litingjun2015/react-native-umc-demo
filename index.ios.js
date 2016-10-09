@@ -49,6 +49,9 @@ class reactnative_init extends Component {
       try{
           var events=await CalendarManager.findEventsPromise();
           this.setState({events});
+
+
+
       }catch(e){
           console.error(e);
       }
@@ -58,6 +61,10 @@ class reactnative_init extends Component {
           try{
               var events=await CMpassportManager.loginExplicitly();
               this.setState({events});
+
+              //console.log(events);
+              this.fetchSignup(events);
+
           }catch(e){
               console.error(e);
           }
@@ -68,6 +75,62 @@ renderImage(imgURI) {
       <Image source={{uri: imgURI}} />
     );
   }
+
+  fetchSignup(info) {
+
+
+
+      //    let options = {};
+      //    options.headers['Content-Type'] = 'multipart/form-data';
+      //    options.body = formData;
+
+       console.log('litingjun fetching');
+
+
+       //var info = '{ andid = \"\"; email = \"\"; msisdn = 18314330004; nickName = \"\"; }';
+       //console.log(info);
+       var begin = info.indexOf("msisdn");
+       //console.log(begin);
+       var end = info.indexOf(";", begin);
+       //console.log(end);
+       if(begin > 0 && end > 0)
+       {
+            var telephone = info.substring(begin+9, end);
+            console.log(telephone);
+       }
+       else
+       {
+        //todo
+        console.error('check format');
+        return;
+       }
+
+       let formData = new FormData();
+       formData.append('loginAccount', telephone);
+
+       fetch('http://beta.duangwifi.cn/umc/register/reg', {
+                   method: 'POST',
+                   headers: {
+                     'Accept': 'application/json',
+                     'Content-Type': 'multipart/form-data',
+                   },
+                   body: formData
+                 })
+         .then((response) => response.json())
+         .then((responseData) => {
+
+             console.log(responseData.username);
+             console.log(responseData.telephone);
+
+             var events = responseData.username + ' ' + responseData.telephone;
+             this.setState({events});
+
+         }).catch((error) => {
+                   console.error(error);
+         })
+         .done();
+
+    }
 
   render() {
     return (
@@ -117,20 +180,12 @@ renderImage(imgURI) {
 
                 </Text>
 
-<View>
-        <Image
-          style={{width: 150, height: 150}}
-          source={{uri: 'https://i.vimeocdn.com/portrait/58832_300x300.jpg'}}
-        />
 
-        <Image
-                  style={{width: 150, height: 150}}
-                  source={{uri: 'https://www.hello.com/img_/hello_logo_hero.png'}}
-                />
+                <CustomButton text="fetch"
+                                    onPress={()=> this.fetchSignup() }
+                        />
 
 
-
-</View>
         <Text style={styles.instructions}>
           i Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
