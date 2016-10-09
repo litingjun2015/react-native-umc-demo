@@ -89,6 +89,30 @@ public class UMCModule extends ReactContextBaseJavaModule {
         try {
             Activity currentActivity=getCurrentActivity();
             if(currentActivity!=null) {
+                Class toActivity = Class.forName(className);
+                Intent intent = new Intent(currentActivity,toActivity);
+                currentActivity.startActivityForResult(intent,requestCode);
+                //进行回调数据
+                successBack.invoke(MainActivity.mQueue.take());
+            }
+        } catch (Exception e) {
+            errorBack.invoke(e.getMessage());
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * 从JS页面跳转到Activity界面，并且等待从Activity返回的数据给JS
+     * @param className
+     * @param successBack
+     * @param errorBack
+     */
+    @ReactMethod
+    public void startActivityFromJSGetResult2(String className,int requestCode, Callback successBack, Callback errorBack){
+        try {
+            Activity currentActivity=getCurrentActivity();
+            if(currentActivity!=null) {
 //                Class toActivity = Class.forName(className);
                 Intent intent = new Intent(currentActivity,ThreeActivity.class);
                 currentActivity.startActivityForResult(intent,requestCode);

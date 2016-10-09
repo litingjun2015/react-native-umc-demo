@@ -136,6 +136,17 @@ public class UMCMainActivity extends Activity implements View.OnClickListener {
 				if (jObj != null && jObj.has("uniqueid")) {
 					mUniqueId = jObj.optString("uniqueid");
 					mAccessToken = jObj.optString("accessToken");
+
+					getUserInfo();
+				}
+				if (jObj != null && jObj.has("msisdn")) {
+
+					//// TODO: 10/9/16
+					// 10-09 15:49:04.697 1773-1773/com.reactnative_init E/WindowManager: android.view.WindowLeaked: Activity cn.richinfo.umcsdk.activity.UMCMainActivity has leaked window com.android.internal.policy.impl.PhoneWindow$DecorView{21c6a270 V.E..... R.....ID 0,0-640,755} that was originally added here
+					Intent mIntent=new Intent();
+					mIntent.putExtra("umc_result",jObj.optString("msisdn"));
+					UMCMainActivity.this.setResult(Activity.RESULT_OK,mIntent);
+					UMCMainActivity.this.finish();
 				}
 			}
 		};
@@ -146,12 +157,10 @@ public class UMCMainActivity extends Activity implements View.OnClickListener {
 		//mAuthnHelper.logOut();
 		//mAccessToken = "";
 
-		//displayLogin();
+		displayLogin();
 
-		Intent mIntent=new Intent();
-		mIntent.putExtra("three_result","From Activity的数据回调过来啦~");
-		UMCMainActivity.this.setResult(Activity.RESULT_OK,mIntent);
-		UMCMainActivity.this.finish();
+
+
 	}
 
 
@@ -254,7 +263,9 @@ public class UMCMainActivity extends Activity implements View.OnClickListener {
 
 
 
-				//getUserInfo();
+				//
+
+
 
 
 				break;

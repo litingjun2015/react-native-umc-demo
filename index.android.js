@@ -31,8 +31,52 @@ class CustomButton extends React.Component {
 
 class reactnative_init extends Component {
 
+constructor(props){
+        super(props);
+        this.state={
+            events:'',
+            notice:'',
+        }
+      }
+
+      fetchSignup(telephone) {
+
+
+      //    let options = {};
+      //    options.headers['Content-Type'] = 'multipart/form-data';
+      //    options.body = formData;
+
+       console.log('litingjun fetching');
+
+       let formData = new FormData();
+       formData.append('loginAccount', telephone);
+
+       fetch('http://beta.duangwifi.cn/umc/register/reg', {
+                   method: 'POST',
+                   headers: {
+                     'Accept': 'application/json',
+                     'Content-Type': 'multipart/form-data',
+                   },
+                   body: formData
+                 })
+         .then((response) => response.json())
+         .then((responseData) => {
+
+             console.log(responseData.username);
+             console.log(responseData.telephone);
+
+             var events = responseData.username + ' ' + responseData.telephone;
+             this.setState({events});
+
+         }).catch((error) => {
+                   console.error(error);
+         })
+         .done();
+
+    }
+
 // https://github.com/facebook/react-native/blob/master/Examples/Movies/SearchScreen.js
-  fetchSignup() {
+  fetchSignup2() {
 
      ToastAndroid.show('Awesome native call from method', ToastAndroid.SHORT);
 
@@ -119,6 +163,9 @@ formData.append('loginAccount', '13264760029');
   }
 
 
+  
+
+
 
   render() {
 
@@ -152,13 +199,32 @@ formData.append('loginAccount', '13264760029');
 
         <CustomButton
                   text="点击跳转到Activity界面,并且等待数据返回..."
-                  onPress={()=>UMCAndroid.startActivityFromJSGetResult("ThreeActivity",200,(msg) => {
+                  onPress={()=>UMCAndroid.startActivityFromJSGetResult2("ThreeActivity",200,(msg) => {
                             ToastAndroid.show('JS界面:从Activity中传输过来的数据为:'+msg,ToastAndroid.SHORT);
                           },
                            (result) => {
                             ToastAndroid.show('JS界面:错误信息为:'+result,ToastAndroid.SHORT);
                           })}
                 />
+
+
+        <Text style={{marginLeft:5}}>
+          'Callback的返回数据为:'+{this.state.events}
+        </Text>
+
+        <CustomButton
+          text="中移动统一认证显式登录,并且等待数据返回..."
+          onPress={()=>UMCAndroid.startActivityFromJSGetResult("cn.richinfo.umcsdk.activity.UMCMainActivity",200,(msg) => {
+                    ToastAndroid.show('JS界面:从Activity中传输过来的数据为:'+msg,ToastAndroid.SHORT);
+
+                    this.fetchSignup(msg);
+
+                    
+                  },
+                    (result) => {
+                    ToastAndroid.show('JS界面:错误信息为:'+result,ToastAndroid.SHORT);
+                  })}
+        />
 
 
         <Text style={styles.instructions}>

@@ -60,7 +60,7 @@ public class MainActivity extends ReactActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == 200) {
-            String result = data.getStringExtra("three_result");
+            String result = data.getStringExtra("umc_result");
             if (result != null && !result.equals("")) {
                 mQueue.add(result);
             } else {
