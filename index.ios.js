@@ -35,6 +35,25 @@ class CustomButton extends React.Component {
 
 class reactnative_init extends Component {
 
+    constructor(props){
+        super(props);
+        this.state={
+            events:'',
+            notice:'',
+        }
+      }
+
+
+  //获取Promise对象处理
+    async _updateEvents(){
+      try{
+          var events=await CalendarManager.findEventsPromise();
+          this.setState({events});
+      }catch(e){
+          console.error(e);
+      }
+    }
+
 renderImage(imgURI) {
     return (
       <Image source={{uri: imgURI}} />
@@ -58,8 +77,20 @@ renderImage(imgURI) {
                 />
 
         <Text style={styles.instructions}>
-
         </Text>
+
+        <Text style={{marginLeft:5}}>
+          'Callback的返回数据为:'+{this.state.events}
+        </Text>
+        <CustomButton text="点击调用原生模块findEventsPromise方法-Promise"
+            onPress={ ()=>this._updateEvents()
+            }
+        />
+
+        <Text style={styles.instructions}>
+                </Text>
+
+
 
         <CustomButton text="中移动统一认证显式登录"
             onPress={()=>CMpassportManager.addEvent('生日聚会', '江苏南通 中天路')}
