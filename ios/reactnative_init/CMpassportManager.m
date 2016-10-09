@@ -62,6 +62,114 @@ RCT_EXPORT_METHOD(addEvent:(NSString *)name location:(NSString *)location){
   
 }
 
+//RCT_REMAP_METHOD(findEventsPromise,
+//                 resolver:(RCTPromiseResolveBlock)resolve
+//                 rejecter:(RCTPromiseRejectBlock)reject)
+//{
+//  NSArray *events =@[@"张三",@"李四",@"王五",@"赵六"];
+//  if (events) {
+//    resolve(events);
+//  } else {
+//    NSError *error=[NSError errorWithDomain:@"我是Promise回调错误信息..." code:101 userInfo:nil];
+//    reject(@"no_events", @"There were no events", error);
+//  }
+//}
+
+
+#pragma mark - Show
+/**
+ 转换成显示的信息
+ */
+- (NSString *)changeShowMessage:(id)sender {
+  NSString *message = @"";
+  id resultcode = sender[@"resultcode"];
+  if ([resultcode isEqual:@"000"]) {
+    //
+    id desc = sender[@"desc"];;
+    message = [message stringByAppendingFormat:@"\n描述:%@",desc];
+    //
+    id passid = sender[@"passid"];;
+    message = [message stringByAppendingFormat:@"\n通行证号:%@",passid];
+    //
+    id uniqueid = sender[@"uniqueid"];;
+    message = [message stringByAppendingFormat:@"\n用户身份标识:%@",uniqueid];
+    //
+    id accesstoken = sender[@"accesstoken"];;
+    message = [message stringByAppendingFormat:@"\naccesstoken:%@",accesstoken];
+  }else {
+    //
+    message = [message stringByAppendingFormat:@"\n错误码:%@",resultcode];
+    //
+    id desc = sender[@"desc"];;
+    message = [message stringByAppendingFormat:@"\n错误描述:%@",desc];
+  }
+  return message;
+}
+
+RCT_REMAP_METHOD(loginExplicitly,
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
+  
+  NSLog(@"click");
+  
+  [UMCOpenSDK customInit:APP_ID_H clientSecret:APP_KEY_H redirectURL:nil];
+  
+  
+  
+  NSLog(@"begin显式登录showExplicitLogin");
+  
+  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+
+  
+  [UMCOpenLogin loginExplicitly:rootViewController complete:^(id sender) {
+    NSLog(@"=open=显式登录:%@",sender);
+    dispatch_async(dispatch_get_main_queue(), ^{
+      NSString *message = [self changeShowMessage:sender];
+      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                          message:[NSString stringWithFormat:@"%@",message]
+                                                         delegate:nil
+                                                cancelButtonTitle:@"确定"
+                                                otherButtonTitles:nil, nil];
+      [alertView show];
+      
+      
+      [UMCOpenLogin getUserInfo:^(id sender) {
+        NSLog(@"=open=用户资料:%@",sender);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                              message:[NSString stringWithFormat:@"%@",sender]
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"确定"
+                                                    otherButtonTitles:nil, nil];
+          [alertView show];
+          
+          
+                    if (sender) {
+                      resolve([NSString stringWithFormat:@"%@",sender]);
+                    } else {
+                      NSError *error=[NSError errorWithDomain:@"我是Promise回调错误信息..." code:101 userInfo:nil];
+                      reject(@"no_events", @"There were no events", error);
+                    }
+          
+          
+        });
+      }];
+      
+      
+      
+      
+    });
+  }];
+
+  
+  
+  NSLog(@"click end");
+  
+}
+
+
 // RCT_EXPORT_METHOD(
 //   sometingToDoWithTheViewControllerOfTheComponent:(nonnull NSNumber *)reactTag // Component 对象的 reactTag
 //   resolver:(RCTPromiseResolveBlock)resolve // 这行 

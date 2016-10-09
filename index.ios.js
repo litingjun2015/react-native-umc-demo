@@ -54,6 +54,15 @@ class reactnative_init extends Component {
       }
     }
 
+    async _loginupdateEvents(){
+          try{
+              var events=await CMpassportManager.loginExplicitly();
+              this.setState({events});
+          }catch(e){
+              console.error(e);
+          }
+        }
+
 renderImage(imgURI) {
     return (
       <Image source={{uri: imgURI}} />
@@ -95,6 +104,14 @@ renderImage(imgURI) {
         <CustomButton text="中移动统一认证显式登录"
             onPress={()=>CMpassportManager.addEvent('生日聚会', '江苏南通 中天路')}
         />
+
+         <Text style={styles.instructions}>
+                        </Text>
+
+
+        <CustomButton text="中移动统一认证显式登录"
+                    onPress={()=>this._loginupdateEvents() }
+                />
 
         <Text style={styles.instructions}>
 
