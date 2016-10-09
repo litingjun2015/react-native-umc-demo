@@ -1,6 +1,7 @@
 package cn.richinfo.umcsdk.activity;
 
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
 
 import org.json.JSONObject;
 
@@ -10,6 +11,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,6 +22,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import cm.pass.sdk.account.UserInfo;
 import cm.pass.sdk.auth.AuthnHelper;
@@ -27,6 +30,8 @@ import cm.pass.sdk.auth.TokenListener;
 import cn.richinfo.umcsdk.show.R;
 import cn.richinfo.umcsdk.util.Constant;
 import cn.richinfo.umcsdk.util.StringFormat;
+
+import static android.R.attr.duration;
 
 @TargetApi(23)
 @SuppressLint("HandlerLeak")
@@ -60,6 +65,8 @@ public class UMCMainActivity extends Activity implements View.OnClickListener {
 		/** 获得 AuthnHelper实例 */
 		mAuthnHelper = AuthnHelper.getInstance(mContext);
 		init();
+
+		//Toast.makeText(this, "init() ok", Toast.LENGTH_SHORT).show();
 	}
 
 	private void init() {
@@ -112,6 +119,7 @@ public class UMCMainActivity extends Activity implements View.OnClickListener {
 					}
 				});
 
+
 		// 默认选项
 		RadioButton rb = (RadioButton) findViewById(R.id.umcsdk_normal);
 		rb.setChecked(true);
@@ -121,6 +129,9 @@ public class UMCMainActivity extends Activity implements View.OnClickListener {
 			@Override
 			public void onGetTokenComplete(JSONObject jObj) {
 				mResultString = jObj.toString();
+
+				//mQueue.add(mResultString);
+
 				mHandler.sendEmptyMessage(RESULT);
 				if (jObj != null && jObj.has("uniqueid")) {
 					mUniqueId = jObj.optString("uniqueid");
@@ -128,7 +139,23 @@ public class UMCMainActivity extends Activity implements View.OnClickListener {
 				}
 			}
 		};
+
+
+		//设置高级权限
+		Constant.isAuthorize(true);
+		//mAuthnHelper.logOut();
+		//mAccessToken = "";
+
+		//displayLogin();
+
+		Intent mIntent=new Intent();
+		mIntent.putExtra("three_result","From Activity的数据回调过来啦~");
+		UMCMainActivity.this.setResult(Activity.RESULT_OK,mIntent);
+		UMCMainActivity.this.finish();
 	}
+
+
+
 
 	@Override
 	public void onClick(View v) {
@@ -201,6 +228,7 @@ public class UMCMainActivity extends Activity implements View.OnClickListener {
 				AuthnHelper.UMC_LOGIN_DISPLAY, mListener);
 	}
 
+
 	private void oAuthLogin() {
 		mAuthnHelper.umcLoginByType(Constant.APP_ID, Constant.APP_KEY,
 				AuthnHelper.UMC_LOGIN_OAUTH, mListener);
@@ -211,6 +239,7 @@ public class UMCMainActivity extends Activity implements View.OnClickListener {
 		mAccessToken = "";
 		mResultString = "清除数据成功!";
 		mHandler.sendEmptyMessage(RESULT);
+
 	}
 
 	Handler mHandler = new Handler() {
@@ -222,6 +251,12 @@ public class UMCMainActivity extends Activity implements View.OnClickListener {
 				mResultText.setText(mResultString);
 				mResultDialog.setResult(StringFormat
 						.logcatFormat(mResultString));
+
+
+
+				//getUserInfo();
+
+
 				break;
 			default:
 				break;
@@ -229,6 +264,8 @@ public class UMCMainActivity extends Activity implements View.OnClickListener {
 		}
 
 	};
+
+
 
 	/*********************************** 以下为获取用户资料相关的接口 ***********************************/
 	private void getUserInfo() {

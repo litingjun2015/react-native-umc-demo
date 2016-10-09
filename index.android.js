@@ -137,7 +137,9 @@ formData.append('loginAccount', '13264760029');
 
 
         <CustomButton text="toast"
-                    onPress={()=> ToastAndroid.show('Awesome native call', ToastAndroid.SHORT)}
+                    onPress={()=> {ToastAndroid.show('Awesome native call', ToastAndroid.SHORT);
+                    console.log("ToastAndroid.show");
+                  }}
         />
 
         <Text style={styles.instructions}>
@@ -145,7 +147,19 @@ formData.append('loginAccount', '13264760029');
 
         <CustomButton text="中移动统一认证显式登录"
                     onPress={()=> UMCAndroid.show('Awesome native call', ToastAndroid.SHORT)}
+                    
         />
+
+        <CustomButton
+                  text="点击跳转到Activity界面,并且等待数据返回..."
+                  onPress={()=>UMCAndroid.startActivityFromJSGetResult("ThreeActivity",200,(msg) => {
+                            ToastAndroid.show('JS界面:从Activity中传输过来的数据为:'+msg,ToastAndroid.SHORT);
+                          },
+                           (result) => {
+                            ToastAndroid.show('JS界面:错误信息为:'+result,ToastAndroid.SHORT);
+                          })}
+                />
+
 
         <Text style={styles.instructions}>
 
