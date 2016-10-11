@@ -1,6 +1,17 @@
+# 使用
+
+```
+git clone
+npm install
+react-native run-android
+react-native run-ios
+```
+
+# 集成步骤
+
 关于中国移动统一认证： [http://dev.10086.cn/wiki/?p5_01_01](http://dev.10086.cn/wiki/?p5_01_01)
 
-# 1. 集成安卓SDK 
+# 1. 集成安卓SDK
 （tongyirenzheng sdk_outer_v1.4.0 for Android_0818160907092935）
 
 ## 1.1 转换Eclipse工程
@@ -136,6 +147,34 @@ Choose what options suits you the best and continue your work.
 ![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3167321-0240b2ac2a94d9ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3167321-1879ffd86b8992a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## 升级有风险，需谨慎：
+
+![Paste_Image.png](http://upload-images.jianshu.io/upload_images/3167321-3c06a32b3fb51a3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+> DuangLink-MacBook-Pro:react-native-umc-demo duanglink$ react-native run-android
+Starting JS server...
+Running /usr/local/opt/android-sdk/platform-tools/adb -s 155556db reverse tcp:8081 tcp:8081
+Building and installing the app on the device (cd android && ./gradlew installDebug...
+Starting a new Gradle Daemon for this build (subsequent builds will be faster).
+
+> FAILURE: Build failed with an exception.
+* Where:
+Build file '/Users/duanglink/ReactNativeProjects/react-native-umc-demo/android/app/build.gradle' line: 1
+
+> * What went wrong:
+A problem occurred evaluating project ':app'.
+> java.lang.UnsupportedClassVersionError: com/android/build/gradle/AppPlugin : Unsupported major.minor version 52.0
+
+> * Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+> BUILD FAILED
+
+暂时不升级。
+
+
 
 # 2. 集成iOS SDK
 
